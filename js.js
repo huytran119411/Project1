@@ -13,7 +13,6 @@ btnAddTask.addEventListener('click', function () {
     let taskId = this.getAttribute("id")
     let tasks= getTaskFromLocalStorage()
     let task = {name: taskName.value}
-
     if(taskId ===0 || taskId){
         tasks[taskId] = task
         this.removeAttribute("id")
