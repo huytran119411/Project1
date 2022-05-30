@@ -23,7 +23,7 @@ btnAddTask.addEventListener('click', function () {
     localStorage.setItem("tasks",JSON.stringify(tasks))
     renderTasks(tasks)
 })
-// render mảng
+// Render mảng
 function renderTasks(tasks = []) {
     let content = '<ul>'
     tasks.forEach((task, index) => {
@@ -40,7 +40,7 @@ function renderTasks(tasks = []) {
 function getTaskFromLocalStorage(){
     return localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []
 }
-//Nút Add
+//Nút Edit
 function editTask(id) {
     let tasks = getTaskFromLocalStorage()
     if(tasks.length>0) {
