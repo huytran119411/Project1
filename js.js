@@ -7,16 +7,18 @@ let tasks= getTaskFromLocalStorage()
 //Function nút Add
 btnAddTask.addEventListener('click', function () {
     if (!taskName.value) {
-        alert('Vui lòng nhập nội dung')
-        return false
+        alert('Bạn vui lòng nhập nội dung')
     }
     let taskId = this.getAttribute("id")
-    let tasks= getTaskFromLocalStorage()
+    let tasks = getTaskFromLocalStorage()
     let task = {name: taskName.value}
-    if(taskId ===0 || taskId){
+    if(taskId ===0 || taskId && taskName.value){
         tasks[taskId] = task
         this.removeAttribute("id")
-    }else {
+    } else {
+        if(!taskName.value){
+            return false
+        }
         tasks.push(task)
     }
     taskName.value = ''
@@ -51,7 +53,9 @@ function editTask(id) {
 //Nút Xoá
 function deleteTask(id) {
     let mangDelete = getTaskFromLocalStorage()
-    mangDelete.splice(id,1)
+    if (confirm("Bạn có muốn xoá") === true){
+        mangDelete.splice(id,1)
+    }
     localStorage.setItem("tasks", JSON.stringify(mangDelete))
     renderTasks(getTaskFromLocalStorage())
 }
