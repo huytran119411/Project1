@@ -52,10 +52,10 @@ function editTask(id) {
 }
 //Nút Xoá
 function deleteTask(id) {
-    let mangDelete = getTaskFromLocalStorage()
+    let arrDelete = getTaskFromLocalStorage()
     if (confirm("Bạn có muốn xoá") === true){
-        mangDelete.splice(id,1)
+        arrDelete.splice(id,1)
     }
-    localStorage.setItem("tasks", JSON.stringify(mangDelete))
+    localStorage.setItem("tasks", JSON.stringify(arrDelete))
     renderTasks(getTaskFromLocalStorage())
 }
